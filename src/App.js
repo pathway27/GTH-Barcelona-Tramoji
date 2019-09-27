@@ -3,7 +3,7 @@ import React from "react";
 function App() {
   return (
     <div>
-      <header>Trimoji :)</header>
+      <h1>Trimoji :)</h1>
     </div>
   );
 }
