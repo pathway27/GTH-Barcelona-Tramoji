@@ -78,6 +78,7 @@ export const Header = styled.div`
   align-items: center;
   justify-content: center;
   background: white;
+  box-shadow: 2px 2px 2px 1px rgba(210, 210, 210, 0.2);
 `;
 
 function openChatbot(eventName) {
