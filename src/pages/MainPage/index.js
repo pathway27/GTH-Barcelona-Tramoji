@@ -20,6 +20,7 @@ export const StyledCard = styled(Card)``;
 
 export const StyledAvatar = styled(Avatar)`
   && {
+    cursor: pointer;
     background-color: #5553b7 !important;
     position: absolute;
     right: 38px;
@@ -48,7 +49,7 @@ export const CenteredTypography = styled(StyledTypography)`
 `;
 
 export const Subtitle = styled(CenteredTypography)`
-  transition: 0.3s ease-in-out all;
+  transition: 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955) all;
   text-align: center;
   opacity: 0;
   transform: translateY(+30px);
