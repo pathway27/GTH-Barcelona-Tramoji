@@ -4,11 +4,9 @@ import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
 import Badge from "@material-ui/core/Badge";
+import emojiNameMap from "emoji-name-map";
 
 import EmojiPicker from "emoji-picker-react";
-import JSEMOJI from "emoji-js";
-
-const jsemoji = new JSEMOJI();
 
 export const StyledCard = styled(Card)`
   transition: 0.3s ease-in-out all;
@@ -88,8 +86,10 @@ const EmojiContainer = ({ emoji, onAdd, onIncrease }) => {
   const [showPicker, setShowPicker] = useState(false);
 
   const handleEmojiClick = (emojiCode, emojiData) => {
-    const selectedEmoji = jsemoji.replace_colons(`:${emojiData.name}:`);
+    console.log("handleEmojiClick", emojiCode, emojiData);
+    const selectedEmoji = emojiNameMap.get(`:${emojiData.name}:`);
 
+    console.log("selectedEmoji", selectedEmoji);
     onAdd(selectedEmoji);
     setShowPicker(false);
   };
