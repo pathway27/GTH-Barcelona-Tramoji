@@ -12,8 +12,10 @@ Project submission for the `Global Travel Hackathon in Barcelona, by Tramoji tea
 - We account for **accessibility** by having a language that transcends the natural ones: emoji. In this way, people can express without any language barriers.
 - There is a sense of **sustainability** by promoting unknown local areas and redistributing mass tourism from main hubs.
 
-* The development tools used to build the project:
-- We use React for the front end with Google Maps using Material UI, with data seeded from users using Python.
+Development tools used to build the project:
+- We use React for the front end with Google Maps using Material UI, with data seeded from users using Python. Additionally, we use Dialogflow as a natural language processor for the development of conversation interfaces, with Kommunicate serving as a provider for the chatbot UI.
+
+Kommunicate as the chatbot UI
 
 ## :hugs: Maintainers
 
@@ -42,7 +44,7 @@ React for the front end
 
 Python for data collection
 
-Dialogflow as a natural language processor for the development of conversation interfaces
+Dialogflow as a natural language processor
 
 Kommunicate as the chatbot UI
 
