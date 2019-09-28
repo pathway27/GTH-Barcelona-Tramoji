@@ -6,7 +6,7 @@ import Icon from "@material-ui/core/Icon";
 import Card from "@material-ui/core/Card";
 import Avatar from "@material-ui/core/Avatar";
 import Map from "../../components/Map";
-import data from "../../data/we_da_best_data";
+import data from "../../data/we_da_best_data2";
 import { EmojiDisplay } from "../../components/EmojiDisplay";
 
 export const Container = styled.div`
