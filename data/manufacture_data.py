@@ -11,7 +11,6 @@ barcelona_center = [41.23, 2.9]
 
 
 def recenter(j, new_c):
-    # IPython.embed()
     if j == [] or j == None:
         return None
     old = j
@@ -22,7 +21,6 @@ def recenter(j, new_c):
                                                                            )), j["long"] + (float(new_c["City"]) + float(new_c["lat1"].split(' ')[0]))
         j["city"] = new_c["Name"].split(", ")[0]
     except TypeError as e:
-        IPython.embed()
         raise SystemExit
     return json.dumps(j)
 
