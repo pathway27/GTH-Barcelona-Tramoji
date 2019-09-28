@@ -81,14 +81,8 @@ export const Header = styled.div`
 `;
 
 function openChatbot(eventName) {
-  if (
-    !(
-      eventName === "Barcelona" ||
-      eventName === "Razzmatazz" ||
-      eventName === "Gracia"
-    )
-  ) {
-    eventName = "WELCOME";
+  if (!(eventName.includes("Barcelona") || eventName.includes("Razzmatazz"))) {
+    eventName = "Welcome";
   }
 
   var conversationDetail = {
