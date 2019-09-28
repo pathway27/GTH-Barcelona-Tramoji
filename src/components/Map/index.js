@@ -4,9 +4,11 @@ import { compose, withProps } from "recompose";
 import {
   withScriptjs,
   withGoogleMap,
+  Point,
   GoogleMap,
   Marker,
-  StreetViewPanorama
+  StreetViewPanorama,
+  MarkerWithLabel
 } from "react-google-maps";
 import "./styles.css";
 import googleMapsStyles from "./googleMapsStyles";
@@ -31,7 +33,7 @@ const Map = compose(
   withGoogleMap
 )(({ data }) => {
   const googleMap = window.google;
-
+  console.log(googleMap.Point);
   return (
     <GoogleMap
       ref={map => (googleMap.current = map)}
@@ -46,6 +48,7 @@ const Map = compose(
       // center={coordinates}
       controlSize={20}
     >
+      <MarkerWithLabel position={{ lat: -34.397, lng: 150.644 }} labelAnchor={new window.google.maps.Point(0, 0)} labelStyle={{backgroundColor: "yellow", fontSize: "32px", padding: "16px"}} />
       <StreetViewPanorama defaultVisible={false} />
     </GoogleMap>
   );
