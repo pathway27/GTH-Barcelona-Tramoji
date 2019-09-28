@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
+import Badge from "@material-ui/core/Badge";
+
 import EmojiPicker from "emoji-picker-react";
 import JSEMOJI from "emoji-js";
 
@@ -28,10 +30,10 @@ export const Block = styled.div`
   flex-direction: column;
   margin-right: 20px;
   margin-top: 20px;
+  margin-bottom: 13px;
   cursor: pointer;
 
   &:last-of-type {
-    margin-top: -6px;
     margin-right: 0;
     display: flex;
     align-items: flex-start;
@@ -75,6 +77,13 @@ export const StyledModal = styled.div`
   position: absolute;
 `;
 
+export const StyledBadge = styled(Badge)`
+  span {
+    background-color: #1c9bd1;
+    color: white;
+  }
+`;
+
 const EmojiContainer = ({ emoji, onAdd, onIncrease }) => {
   const [showPicker, setShowPicker] = useState(false);
 
@@ -87,10 +96,17 @@ const EmojiContainer = ({ emoji, onAdd, onIncrease }) => {
 
   return emoji ? (
     <Block onClick={onIncrease}>
-      <StyledEmojiContainer userVoted={emoji.userVoted}>
-        {emoji.emoji}
-      </StyledEmojiContainer>
-      <StyledTypography variant="subtitle1">{emoji.count}</StyledTypography>
+      <StyledBadge
+        badgeContent={emoji.count}
+        anchorOrigin={{
+          horizontal: "right",
+          vertical: "bottom"
+        }}
+      >
+        <StyledEmojiContainer userVoted={emoji.userVoted}>
+          {emoji.emoji}
+        </StyledEmojiContainer>
+      </StyledBadge>
     </Block>
   ) : (
     <Block>
