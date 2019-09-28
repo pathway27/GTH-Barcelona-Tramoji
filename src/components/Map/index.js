@@ -33,7 +33,7 @@ const Map = compose(
   }),
   withScriptjs,
   withGoogleMap
-)(({ emojis, onClick, selectedPoi }) => {
+)(({ emojis, onClick, selectedPoi, onNothingClick }) => {
   const googleMap = window.google;
 
   const bestData = emojis.map(({ long, ...other }) => {
@@ -44,6 +44,7 @@ const Map = compose(
     <GoogleMap
       ref={map => (googleMap.current = map)}
       className={"gm-style"}
+      onClick={onNothingClick}
       defaultZoom={5}
       defaultCenter={{ lng: 0, lat: 0 }}
       defaultOptions={{

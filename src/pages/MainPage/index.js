@@ -2,28 +2,98 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { uniqWith } from "lodash";
 import Typography from "@material-ui/core/Typography";
+import Icon from "@material-ui/core/Icon";
 import Card from "@material-ui/core/Card";
+import Avatar from "@material-ui/core/Avatar";
 import Map from "../../components/Map";
 import data from "../../data/we_da_best_data";
 import { EmojiDisplay } from "../../components/EmojiDisplay";
 
 export const Container = styled.div`
-  padding: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 `;
 
-export const StyledCard = styled(Card)`
-  padding: 15px;
+export const StyledCard = styled(Card)``;
+
+export const StyledAvatar = styled(Avatar)`
+  && {
+    background-color: #5553b7 !important;
+    position: absolute;
+    right: 38px;
+  }
+`;
+
+export const StyledIcon = styled(Icon)`
+  color: #5553b7;
+  margin-left: 10px;
+  cursor: pointer;
 `;
 
 export const StyledTypography = styled(Typography)``;
 
+export const StyledCity = styled(Card)`
+  padding: 18px;
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+`;
+
 export const CenteredTypography = styled(StyledTypography)`
   text-align: center;
 `;
+
+export const Subtitle = styled(CenteredTypography)`
+  text-align: center;
+
+  @media (max-width: 940px) {
+    display: none;
+  }
+`;
+
+export const CityName = styled(CenteredTypography)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Header = styled.div`
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+`;
+
+function openChatbot(eventName) {
+  var conversationDetail = {
+    skipBotEvent: '["WELCOME_EVENT"]'
+  };
+  window.Kommunicate.startConversation(conversationDetail, function(response) {
+    console.log(response);
+    window.KommunicateGlobal.Applozic.ALApiService.sendMessage({
+      data: {
+        message: {
+          type: 5,
+          contentType: 10,
+          message: "Event: " + eventName,
+          groupId: response,
+          metadata: { category: "HIDDEN", KM_TRIGGER_EVENT: eventName },
+          source: 1
+        }
+      },
+      success: function(response2) {
+        console.log(response2);
+      },
+      error: function() {}
+    });
+  });
+}
 
 export const MainPage = () => {
   const newData = uniqWith(data.slice(0, 1000), (a, b) => a.city === b.city);
@@ -39,21 +109,32 @@ export const MainPage = () => {
 
   return (
     <>
-      <Map emojis={newData} onClick={handleClick} selectedPoi={selectedPoi} />
+      <Map
+        emojis={newData}
+        onClick={handleClick}
+        selectedPoi={selectedPoi}
+        onNothingClick={() => setSelectedPoi(null)}
+      />
       <Container>
-        <StyledCard>
-          <CenteredTypography variant="h4" gutterBottom>
-            Tramoji
+        <Header>
+          <CenteredTypography variant="h4" style={{ marginRight: "15px" }}>
+            Tramoji™️
           </CenteredTypography>
-          <CenteredTypography variant="h6">
-            Connect with emojions.
-          </CenteredTypography>
-          {selectedPoi && (
-            <CenteredTypography variant="h6">
-              {selectedPoi.city}.
-            </CenteredTypography>
-          )}
-        </StyledCard>
+          <Subtitle variant="h6">Connect with emojions.</Subtitle>
+          <StyledAvatar>TM</StyledAvatar>
+        </Header>
+        {selectedPoi && (
+          <StyledCity>
+            <CityName variant="h6">{selectedPoi.city}</CityName>
+            <StyledIcon
+              onClick={() => {
+                openChatbot(selectedPoi.city);
+              }}
+            >
+              info
+            </StyledIcon>
+          </StyledCity>
+        )}
         {selectedPoi && <EmojiDisplay />}
       </Container>
     </>

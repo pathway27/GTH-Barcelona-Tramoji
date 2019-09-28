@@ -9,10 +9,17 @@ import JSEMOJI from "emoji-js";
 const jsemoji = new JSEMOJI();
 
 export const StyledCard = styled(Card)`
+  transition: 0.3s ease-in-out all;
   padding: 15px;
+  margin-top: 10px;
+
+  @media (max-width: 940px) {
+    margin-top: 90px;
+  }
 `;
 
 export const Block = styled.div`
+  transition: 0.3s ease-in-out all;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,16 +36,23 @@ export const Block = styled.div`
 `;
 
 export const StyledEmojiContainer = styled.div`
+  transition: 0.3s ease-in-out all;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 15px;
   padding-bottom: 11px;
-  border: 1px dashed black;
   font-size: 30px;
+  background-color: ${props => (props.userVoted ? "#e5f5fa" : "#f6f6f6")};
+  border-radius: 12px;
+
+  ${props =>
+    props.userVoted &&
+    `box-shadow: rgb(29, 155, 209) 0px 0px 0px 1.5px inset;`};
 `;
 
 export const StyledLasto = styled(StyledEmojiContainer)`
+  transition: 0.3s ease-in-out all;
   padding: 6px 22px 11px 22px;
   height: 62px;
   box-sizing: border-box;
@@ -69,7 +83,9 @@ const EmojiContainer = ({ emoji, onAdd, onIncrease }) => {
 
   return emoji ? (
     <Block onClick={onIncrease}>
-      <StyledEmojiContainer>{emoji.emoji}</StyledEmojiContainer>
+      <StyledEmojiContainer userVoted={emoji.userVoted}>
+        {emoji.emoji}
+      </StyledEmojiContainer>
       <StyledTypography variant="subtitle1">{emoji.count}</StyledTypography>
     </Block>
   ) : (
@@ -91,18 +107,18 @@ export const EmojisContainer = styled.div`
 `;
 
 const topEmojis = [
-  { emoji: "😂", count: 28 },
-  { emoji: "😍", count: 18 },
-  { emoji: "❤️", count: 12 },
-  { emoji: "😎", count: 9 },
-  { emoji: "💩", count: 3 }
+  { emoji: "😂", count: 28, userVoted: false },
+  { emoji: "😍", count: 18, userVoted: false },
+  { emoji: "❤️", count: 12, userVoted: false },
+  { emoji: "😎", count: 9, userVoted: false },
+  { emoji: "💩", count: 3, userVoted: false }
 ];
 
 export const EmojiDisplay = () => {
   const [emojis, setEmojis] = useState(topEmojis);
 
   const handleAdd = emoji => {
-    setEmojis(value => [...value, { emoji, count: 1 }]);
+    setEmojis(value => [...value, { emoji, count: 1, userVoted: true }]);
   };
 
   return (
@@ -112,11 +128,21 @@ export const EmojiDisplay = () => {
           <EmojiContainer
             emoji={emoji}
             onIncrease={() => {
-              setEmojis(current =>
-                current.map((v, i) =>
-                  i === index ? { ...v, count: v.count + 1 } : v
-                )
-              );
+              const isIncreaseDisabled = emojis[index].userVoted;
+
+              setEmojis(current => {
+                const updatedEmojis = current.map((v, i) =>
+                  i === index
+                    ? {
+                        ...v,
+                        count: isIncreaseDisabled ? v.count - 1 : v.count + 1,
+                        userVoted: !isIncreaseDisabled
+                      }
+                    : v
+                );
+
+                return updatedEmojis.filter(emoji => emoji.count);
+              });
             }}
           />
         ))}
