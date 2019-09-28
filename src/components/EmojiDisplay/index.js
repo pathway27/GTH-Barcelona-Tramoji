@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
@@ -137,12 +137,19 @@ const topEmojis = [
   { emoji: "💩", count: 3, userVoted: false }
 ];
 
-export const EmojiDisplay = () => {
+export const EmojiDisplay = ({ selectedPoi }) => {
   const [emojis, setEmojis] = useState(topEmojis);
 
   const handleAdd = emoji => {
     setEmojis(value => [...value, { emoji, count: 1, userVoted: true }]);
   };
+
+  useEffect(() => {
+    setEmojis(value => {
+      const first = { ...value[0], emoji: selectedPoi.emojis };
+      return [first, ...value.slice(1)];
+    });
+  }, [selectedPoi]);
 
   return (
     <StyledCard>

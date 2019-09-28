@@ -205,7 +205,7 @@ export const MainPage = () => {
             </StyledIcon>
           </StyledCity>
         )}
-        {selectedPoi && <EmojiDisplay />}
+        {selectedPoi && <EmojiDisplay selectedPoi={selectedPoi} />}
       </Container>
     </>
   );
