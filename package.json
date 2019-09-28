@@ -1,20 +1,23 @@
 {
-  "name": "trimoji",
+  "name": "tramoji",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.4.3",
+    "env-cmd": "^10.0.1",
+    "lodash": "^4.17.15",
     "prettier": "^1.18.2",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
     "react-google-maps": "^9.4.5",
     "react-router-dom": "^5.1.1",
     "react-scripts": "3.1.2",
+    "recompose": "^0.30.0",
     "styled-components": "^4.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "env-cmd  react-scripts start",
+    "build": "env-cmd .env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
