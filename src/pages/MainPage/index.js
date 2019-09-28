@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { uniqWith } from "lodash";
 import Typography from "@material-ui/core/Typography";
@@ -25,23 +25,33 @@ export const CenteredTypography = styled(StyledTypography)`
 `;
 
 export const MainPage = () => {
-  console.log("data", data);
-
-  const newData = uniqWith(data.slice(0, 666), (a, b) => a.city === b.city);
+  const newData = uniqWith(data.slice(0, 1000), (a, b) => a.city === b.city);
 
   console.log("newData", newData);
 
+  const [selectedPoi, setSelectedPoi] = useState(null);
+
+  const handleClick = useCallback(poi => {
+    console.log("handleClick", poi);
+    setSelectedPoi(poi);
+  }, []);
+
   return (
     <>
-      <Map emojis={newData} />
+      <Map emojis={newData} onClick={handleClick} selectedPoi={selectedPoi} />
       <Container>
         <StyledCard>
-          <CenteredTypography variant="h1" gutterBottom>
+          <CenteredTypography variant="h4" gutterBottom>
             Tramoji
           </CenteredTypography>
-          <CenteredTypography variant="h4">
+          <CenteredTypography variant="h6">
             Connect with emojions.
           </CenteredTypography>
+          {selectedPoi && (
+            <CenteredTypography variant="h6">
+              {selectedPoi.city}.
+            </CenteredTypography>
+          )}
         </StyledCard>
       </Container>
     </>

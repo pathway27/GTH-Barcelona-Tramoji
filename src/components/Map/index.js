@@ -24,8 +24,6 @@ const StyledMapWrapper = styled.div`
   z-index: -1;
 `;
 
-console.log("MarkerWithLabel", MarkerWithLabel);
-
 const Map = compose(
   withProps({
     googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`,
@@ -35,7 +33,7 @@ const Map = compose(
   }),
   withScriptjs,
   withGoogleMap
-)(({ emojis }) => {
+)(({ emojis, onClick, selectedPoi }) => {
   const googleMap = window.google;
 
   const bestData = emojis.map(({ long, ...other }) => {
@@ -53,21 +51,31 @@ const Map = compose(
         keyboardShortcuts: false,
         styles: googleMapsStyles
       }}
-      center={{ lat: -34.397, lng: 150.644 }}
+      center={
+        selectedPoi
+          ? { lat: selectedPoi.lat, lng: selectedPoi.lng }
+          : {
+              lat: 41.387979,
+              lng: 2.170081
+            }
+      }
       controlSize={20}
     >
-      {bestData.map(({ lat, lng, emojis }) => (
+      {bestData.map(poi => (
         <MarkerWithLabel
           key={"test"}
           opacity={0}
-          position={{ lat, lng }}
+          position={{ lat: poi.lat, lng: poi.lng }}
           labelAnchor={new window.google.maps.Point(0, 0)}
           labelClass={"emojiContainer"}
           labelStyle={{
             fontSize: "32px"
           }}
+          onClick={() => {
+            onClick(poi);
+          }}
         >
-          <div>{emojis}</div>
+          <div>{poi.emojis}</div>
         </MarkerWithLabel>
       ))}
 
