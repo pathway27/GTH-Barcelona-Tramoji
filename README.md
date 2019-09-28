@@ -3,6 +3,7 @@ Project submission for the `Global Travel Hackathon in Barcelona, by Tramoji tea
 
 **Emoji-based social network for the 21st century travel discovery. 🌍🌏🌎**
 
+
 ![Add a screenshot from your project. For example the main website page.](https://github.com/pathway27/GTH-Barcelona-Tramoji/blob/master/src-images/Screenshot.PNG?raw=true)
 
 ## :books: Description
@@ -46,7 +47,9 @@ $ npm start
 ## :bulb: Devstack
 
 React
+
 Dialogflow - Natural language processor for the development of conversation interfaces 
+
 Kommunicate - Chatbot UI provider with rich message functionality
 
 ## :warning: License
