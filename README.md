@@ -38,13 +38,13 @@ $ npm start
 
 ## :bulb: Devstack
 
-React for the front end
+* React - Front end
 
-Python for data collection
+* Python - Data collection
 
-Dialogflow as a natural language processor
+* Dialogflow - Natural language processor
 
-Kommunicate as the chatbot UI
+* Kommunicate - Chatbot UI
 
 ## :warning: License
 
