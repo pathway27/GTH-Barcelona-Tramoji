@@ -76,6 +76,16 @@ export const Header = styled.div`
 `;
 
 function openChatbot(eventName) {
+  if (
+    !(
+      eventName === "Barcelona" ||
+      eventName === "Razzmatazz" ||
+      eventName === "Gracia"
+    )
+  ) {
+    eventName = "WELCOME";
+  }
+
   var conversationDetail = {
     skipBotEvent: '["WELCOME_EVENT"]'
   };
