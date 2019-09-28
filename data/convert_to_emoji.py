@@ -60,7 +60,10 @@ def process_row(row):
         if row['reviews'] == None or row['reviews'] == '':
             return None
         reviews_r = requests.get(row['reviews'])
-        work = [[row, review] for review in reviews_r.json()]
+        try:
+            work = [[row, review] for review in reviews_r.json()]
+        except json.decoder.JSONDecodeError:
+            return None
         outputs = list(map(convert_review, work))
         return outputs
     except Exception as e:

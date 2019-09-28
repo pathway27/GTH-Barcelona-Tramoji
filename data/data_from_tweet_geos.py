@@ -10,6 +10,10 @@ import emoji
 import numpy as np
 import random
 
+# filter emojis
+# fix city fields (closest to center)
+# zoom into barcelona
+
 shift_vals = list(itertools.chain.from_iterable(
     [(i+1)*[num] for i, num in enumerate(np.arange(1.0/6.0, 1.0/(888.0*3.0), -1.0/(888.0*5.0)))]))
 
