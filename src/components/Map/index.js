@@ -7,9 +7,11 @@ import {
   Point,
   GoogleMap,
   Marker,
-  StreetViewPanorama,
-  MarkerWithLabel
+  StreetViewPanorama
 } from "react-google-maps";
+
+import MarkerWithLabel from "react-google-maps/lib/components/addons/MarkerWithLabel";
+
 import "./styles.css";
 import googleMapsStyles from "./googleMapsStyles";
 
@@ -22,6 +24,8 @@ const StyledMapWrapper = styled.div`
   z-index: -1;
 `;
 
+console.log("MarkerWithLabel", MarkerWithLabel);
+
 const Map = compose(
   withProps({
     googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`,
@@ -33,7 +37,7 @@ const Map = compose(
   withGoogleMap
 )(({ data }) => {
   const googleMap = window.google;
-  console.log(googleMap.Point);
+
   return (
     <GoogleMap
       ref={map => (googleMap.current = map)}
@@ -45,10 +49,19 @@ const Map = compose(
         keyboardShortcuts: false,
         styles: googleMapsStyles
       }}
-      // center={coordinates}
+      center={{ lat: -34.397, lng: 150.644 }}
       controlSize={20}
     >
-      <MarkerWithLabel position={{ lat: -34.397, lng: 150.644 }} labelAnchor={new window.google.maps.Point(0, 0)} labelStyle={{backgroundColor: "yellow", fontSize: "32px", padding: "16px"}} />
+      <MarkerWithLabel
+        position={{ lat: -34.397, lng: 150.644 }}
+        // labelAnchor={new window.google.maps.Point(0, 0)}
+        labelStyle={{
+          fontSize: "32px",
+          padding: "16px"
+        }}
+      >
+        <div>🚀</div>
+      </MarkerWithLabel>
       <StreetViewPanorama defaultVisible={false} />
     </GoogleMap>
   );
