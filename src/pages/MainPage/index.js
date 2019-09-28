@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
 import Map from "../../components/Map";
 
 export const Container = styled.div`
@@ -11,7 +12,13 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const CenteredTypography = styled(Typography)`
+export const StyledCard = styled(Card)`
+  padding: 15px;
+`;
+
+export const StyledTypography = styled(Typography)``;
+
+export const CenteredTypography = styled(StyledTypography)`
   text-align: center;
 `;
 
@@ -20,11 +27,14 @@ export const MainPage = () => {
     <>
       <Map />
       <Container>
-        <Typography variant="h1">Tramoji</Typography>
-        <CenteredTypography variant="h4">
-          Discover local destinations,
-          <br /> with the power of user curated emoji reviews
-        </CenteredTypography>
+        <StyledCard>
+          <CenteredTypography variant="h1" gutterBottom>
+            Tramoji
+          </CenteredTypography>
+          <CenteredTypography variant="h4">
+            Connect with emojions
+          </CenteredTypography>
+        </StyledCard>
       </Container>
     </>
   );
