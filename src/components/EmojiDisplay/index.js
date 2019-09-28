@@ -86,10 +86,8 @@ const EmojiContainer = ({ emoji, onAdd, onIncrease }) => {
   const [showPicker, setShowPicker] = useState(false);
 
   const handleEmojiClick = (emojiCode, emojiData) => {
-    console.log("handleEmojiClick", emojiCode, emojiData);
     const selectedEmoji = emojiNameMap.get(`:${emojiData.name}:`);
 
-    console.log("selectedEmoji", selectedEmoji);
     onAdd(selectedEmoji);
     setShowPicker(false);
   };
