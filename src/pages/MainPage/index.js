@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import Map from "../../components/Map";
+import data from "../../data/barcelona-restaurant-partial";
 
 export const Container = styled.div`
   padding: 15px;
@@ -23,6 +24,12 @@ export const CenteredTypography = styled(StyledTypography)`
 `;
 
 export const MainPage = () => {
+  console.log("data", data);
+
+  const newData = [data[0]];
+
+  console.log("newData", newData);
+
   return (
     <>
       <Map />
@@ -32,7 +39,7 @@ export const MainPage = () => {
             Tramoji
           </CenteredTypography>
           <CenteredTypography variant="h4">
-            Connect with emojions
+            Connect with emojions.
           </CenteredTypography>
         </StyledCard>
       </Container>
