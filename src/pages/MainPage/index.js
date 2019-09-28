@@ -5,6 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import Icon from "@material-ui/core/Icon";
 import Card from "@material-ui/core/Card";
 import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import { useSnackbar } from "notistack";
 import Map from "../../components/Map";
 import data from "../../data/we_da_best_data2";
 import { EmojiDisplay } from "../../components/EmojiDisplay";
@@ -112,6 +114,8 @@ function openChatbot(eventName) {
 }
 
 export const MainPage = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const newData = uniqWith(data.slice(0, 1000), (a, b) => a.city === b.city);
 
   console.log("newData", newData);
@@ -127,6 +131,36 @@ export const MainPage = () => {
 
   useEffect(() => {
     setTimeout(() => setSubtitleVisible(true), 1000);
+
+    setTimeout(
+      () =>
+        enqueueSnackbar(
+          "🔥 Extra points for the next 2 hours in locations near you!",
+          {
+            action: () => (
+              <Button color="secondary" size="small">
+                Click here!
+              </Button>
+            )
+          }
+        ),
+      1000 * 4
+    );
+
+    setTimeout(
+      () =>
+        enqueueSnackbar(
+          "😲 You are 5 points away from your next achievement!",
+          {
+            action: () => (
+              <Button color="secondary" size="small">
+                Tell me more
+              </Button>
+            )
+          }
+        ),
+      1000 * 20
+    );
   }, []);
 
   return (
