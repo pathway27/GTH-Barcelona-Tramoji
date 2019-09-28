@@ -77,7 +77,8 @@ export const StyledModal = styled.div`
 
 export const StyledBadge = styled(Badge)`
   span {
-    background-color: #1c9bd1;
+    transition: 0.3s ease-in-out all;
+    background-color: ${props => (props.userVoted ? "#1c9bd1" : "#a5a5a5")};
     color: white;
   }
 `;
@@ -95,6 +96,7 @@ const EmojiContainer = ({ emoji, onAdd, onIncrease }) => {
   return emoji ? (
     <Block onClick={onIncrease}>
       <StyledBadge
+        userVoted={emoji.userVoted}
         badgeContent={emoji.count}
         anchorOrigin={{
           horizontal: "right",
