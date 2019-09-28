@@ -8,14 +8,12 @@ Project submission for the `Global Travel Hackathon in Barcelona, by Tramoji tea
 
 ## :books: Description
 
-- We rely on the global **community** to express and understand the meta language being made.
-- We have **accessibility** by having a language that trancends the natural languages, emoji.
-  Using this people can express without directly talking to each other.
-- There is a sense of **sustainability** by promoting unknown local areas.
+- We rely on the global **community** to express and understand the meta language being created.
+- We account for **accessibility** by having a language that transcends the natural ones: emoji. In this way, people can express without any language barriers.
+- There is a sense of **sustainability** by promoting unknown local areas and redistributing mass tourism from main hubs.
 
-* The development tools used to build the project;
-- We use React for the front end with Google Maps using Material UI, with data seeded from
-  users using Python.
+* The development tools used to build the project:
+- We use React for the front end with Google Maps using Material UI, with data seeded from users using Python.
 
 ## :hugs: Maintainers
 
@@ -27,7 +25,6 @@ Project submission for the `Global Travel Hackathon in Barcelona, by Tramoji tea
 
 
 ## :tada: Why is this so awesome?
-
 
 * Time is a precious resource, we plan to save time in the long run.
 * It transcends language by allowing emoji to express your emoji.
@@ -41,13 +38,13 @@ $ npm start
 
 ## :bulb: Devstack
 
-React
+React for the front end
 
-Python for data
+Python for data collection
 
-Dialogflow - Natural language processor for the development of conversation interfaces
+Dialogflow as a natural language processor for the development of conversation interfaces
 
-Kommunicate - Chatbot UI provider with rich message functionality
+Kommunicate as the chatbot UI
 
 ## :warning: License
 
