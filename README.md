@@ -1,7 +1,7 @@
 # GTH-Barcelona-Tramoji
 Project submission for the `Global Travel Hackathon in Barcelona, by Tramoji team`.
 
-**Emoji based social network for the 21st century travel discovery.**
+**Emoji-based social network for the 21st century travel discovery. 🌍🌏🌎**
 
 ![Add a screenshot from your project. For example the main website page.](https://raw.githubusercontent.com/Global-Travel-Hackathon/GTH-Location-TeamName/master/screenshots/Global-Travel-Hackathon-image.png)
 
@@ -33,7 +33,7 @@ We are a mix of all three in this way:
 * Two.
 * Etc.
 
-* It's for the modern traveller
+* Designed for the modern traveller
 * It transcends language.
 
 ## :hammer_and_wrench: Installation
@@ -46,6 +46,8 @@ $ npm start
 ## :bulb: Devstack
 
 React
+Dialogflow
+Kommunicate
 
 ## :warning: License
 
