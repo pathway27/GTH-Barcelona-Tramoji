@@ -46,8 +46,8 @@ $ npm start
 ## :bulb: Devstack
 
 React
-Dialogflow
-Kommunicate
+Dialogflow - Natural language processor for the development of conversation interfaces 
+Kommunicate - Chatbot UI provider with rich message functionality
 
 ## :warning: License
 
