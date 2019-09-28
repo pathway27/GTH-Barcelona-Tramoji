@@ -26,8 +26,8 @@ Project submission for the `Global Travel Hackathon in Barcelona, by Tramoji tea
 
 ## :tada: Why is this so awesome?
 
-* Time is a precious resource, we plan to save time in the long run.
-* It transcends language by allowing emoji to express your emoji.
+* We do a great job at saving our user's precious time, in a visually attractive format. 
+* It transcends the traditional language barries by allowing emoji to express yourself.
 
 ## :hammer_and_wrench: Installation
 
