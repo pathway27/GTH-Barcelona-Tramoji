@@ -19,7 +19,6 @@ Write a short abstract of the project. Don't forget to include:
 
 ## :hugs: Maintainers
 
-List all the team members. For example:
 * [Alexis - Ale-xis](https://github.com/Ale-xis)
 * [Esteban - elas7](https://github.com/elas7)
 * [Martina - martinacendron](https://github.com/martinacendron)
@@ -41,10 +40,6 @@ Write a short description how can other people run your project.
 
 Please, explain what technologies you have used.
 
-## :warning: Licence
+## :warning: License
 
-Any intellectual property developed during and within the scope of the hackathon must be open source and licensed under one of the licenses referenced in https://opensource.org/licenses. We will not have any rights and teams will be the author of their work.
-
-`Example:`
-
->The code in this project is licensed under MIT license. By contributing to this project, you agree that your contributions will be licensed under its MIT license.
+The code in this project is licensed under MIT license. By contributing to this project, you agree that your contributions will be licensed under its MIT license.
