@@ -36,8 +36,10 @@ const Map = compose(
 )(({ emojis, onClick, selectedPoi, onNothingClick, onZoomChanged }) => {
   const googleMap = window.google;
 
-  const bestData = emojis.map(({ long, ...other }) => {
-    return { lng: long, ...other };
+  const bestData = emojis.map(({ long, emojis, ...other }) => {
+    const filteredEmoji = emojis.split(" ")[0].split("|")[0];
+
+    return { lng: long, emojis: filteredEmoji, ...other };
   });
 
   return (
