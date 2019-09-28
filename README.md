@@ -1,21 +1,22 @@
 # GTH-Barcelona-Tramoji
 Project submission for the `Global Travel Hackathon in Barcelona, by Tramoji team`.
 
-**Write one sentence explaining what does your project.**
+**Emoji based social network for the 21st century travel discovery.**
 
 ![Add a screenshot from your project. For example the main website page.](https://raw.githubusercontent.com/Global-Travel-Hackathon/GTH-Location-TeamName/master/screenshots/Global-Travel-Hackathon-image.png)
 
 ## :books: Description
 
-Write a short abstract of the project. Don't forget to include:
+We are a mix of all three in this way:
+- We use Accessibility by having a language that trancends the natural languages, emoji.
+  Using this people can express without directly talking to each other.
+- We rely on the community to express and understand the meta language being made.
 
 * Hackathon topic you used (Sustainability, Accessibility or Community);
 * The development tools used to build the project;
-* SDKs used in the project;
-* APIs used in the project;
-* Any assets used in the project;
-* Any libraries used in the project;
-* Any components not created at the hackathon;
+- We use React for the front end with Google Maps, with data seeded from
+  users using Python.
+- We use Material UI
 
 ## :hugs: Maintainers
 
@@ -32,13 +33,19 @@ Write a short abstract of the project. Don't forget to include:
 * Two.
 * Etc.
 
+* It's for the modern traveller
+* It transcends language.
+
 ## :hammer_and_wrench: Installation
 
-Write a short description how can other people run your project.
+```
+$ yarn
+$ npm start
+```
 
 ## :bulb: Devstack
 
-Please, explain what technologies you have used.
+React
 
 ## :warning: License
 
