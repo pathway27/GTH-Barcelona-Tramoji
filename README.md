@@ -40,6 +40,6 @@ Write a short description how can other people run your project.
 
 Please, explain what technologies you have used.
 
-## :warning: Licence
+## :warning: License
 
 The code in this project is licensed under MIT license. By contributing to this project, you agree that your contributions will be licensed under its MIT license.
