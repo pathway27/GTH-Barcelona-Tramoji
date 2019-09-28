@@ -3,6 +3,7 @@ Project submission for the `Global Travel Hackathon in Barcelona, by Tramoji tea
 
 **Emoji-based social network for the 21st century travel discovery. 🌍🌏🌎**
 
+[Click here to access Tramoji!](https://blissful-hawking-b60a68.netlify.com/)
 
 ![Add a screenshot from your project. For example the main website page.](https://github.com/pathway27/GTH-Barcelona-Tramoji/blob/master/src-images/Screenshot.PNG?raw=true)
 
