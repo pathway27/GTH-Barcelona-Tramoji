@@ -53,11 +53,13 @@ const Map = compose(
       controlSize={20}
     >
       <MarkerWithLabel
+        key={"test"}
+        opacity={0}
         position={{ lat: -34.397, lng: 150.644 }}
-        // labelAnchor={new window.google.maps.Point(0, 0)}
+        labelAnchor={new window.google.maps.Point(0, 0)}
+        labelClass={"emojiContainer"}
         labelStyle={{
-          fontSize: "32px",
-          padding: "16px"
+          fontSize: "32px"
         }}
       >
         <div>🚀</div>
