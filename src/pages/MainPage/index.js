@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import styled from "styled-components";
 import { uniqWith } from "lodash";
 import Typography from "@material-ui/core/Typography";
@@ -8,7 +8,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import { useSnackbar } from "notistack";
 import Map from "../../components/Map";
-import data from "../../data/we_da_best_data2";
+import aggregateData from "../../data/aggregate_data";
+import granularData from "../../data/granular_data";
 import { EmojiDisplay } from "../../components/EmojiDisplay";
 
 export const Container = styled.div`
@@ -116,14 +117,9 @@ function openChatbot(eventName) {
 export const MainPage = () => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const newData = uniqWith(data.slice(0, 1000), (a, b) => a.city === b.city);
-
-  console.log("newData", newData);
-
   const [selectedPoi, setSelectedPoi] = useState(null);
 
   const handleClick = useCallback(poi => {
-    console.log("handleClick", poi);
     setSelectedPoi(poi);
   }, []);
 
@@ -163,11 +159,27 @@ export const MainPage = () => {
     );
   }, []);
 
+  const [zoomLevel, setZoomLevel] = useState(null);
+
+  const onZoomChanged = useCallback(level => setZoomLevel(level), []);
+
+  const newData = useMemo(() => {
+    const zoomedIn = zoomLevel >= 10;
+    const dataSource = zoomedIn ? granularData : aggregateData;
+
+    const filteredData = uniqWith(
+      dataSource.slice(0, 1000),
+      (a, b) => a.city === b.city
+    );
+    return filteredData;
+  }, [zoomLevel]);
+
   return (
     <>
       <Map
         emojis={newData}
         onClick={handleClick}
+        onZoomChanged={onZoomChanged}
         selectedPoi={selectedPoi}
         onNothingClick={() => setSelectedPoi(null)}
       />
