@@ -4,10 +4,14 @@ import { compose, withProps } from "recompose";
 import {
   withScriptjs,
   withGoogleMap,
+  Point,
   GoogleMap,
   Marker,
   StreetViewPanorama
 } from "react-google-maps";
+
+import MarkerWithLabel from "react-google-maps/lib/components/addons/MarkerWithLabel";
+
 import "./styles.css";
 import googleMapsStyles from "./googleMapsStyles";
 
@@ -19,6 +23,8 @@ const StyledMapWrapper = styled.div`
   width: 100%;
   z-index: -1;
 `;
+
+console.log("MarkerWithLabel", MarkerWithLabel);
 
 const Map = compose(
   withProps({
@@ -43,9 +49,19 @@ const Map = compose(
         keyboardShortcuts: false,
         styles: googleMapsStyles
       }}
-      // center={coordinates}
+      center={{ lat: -34.397, lng: 150.644 }}
       controlSize={20}
     >
+      <MarkerWithLabel
+        position={{ lat: -34.397, lng: 150.644 }}
+        // labelAnchor={new window.google.maps.Point(0, 0)}
+        labelStyle={{
+          fontSize: "32px",
+          padding: "16px"
+        }}
+      >
+        <div>🚀</div>
+      </MarkerWithLabel>
       <StreetViewPanorama defaultVisible={false} />
     </GoogleMap>
   );
