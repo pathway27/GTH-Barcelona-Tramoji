@@ -11,6 +11,7 @@ import Map from "../../components/Map";
 import aggregateData from "../../data/aggregate_data";
 import granularData from "../../data/granular_data";
 import { EmojiDisplay } from "../../components/EmojiDisplay";
+import Tooltip from "@material-ui/core/Tooltip";
 
 export const Container = styled.div`
   display: flex;
@@ -155,7 +156,7 @@ export const MainPage = () => {
             )
           }
         ),
-      1000 * 20
+      1000 * 12
     );
   }, []);
 
@@ -191,18 +192,22 @@ export const MainPage = () => {
           <Subtitle variant="h6" subtitleVisible={subtitleVisible}>
             Connect with emojions.
           </Subtitle>
-          <StyledAvatar>TM</StyledAvatar>
+          <Tooltip title="User Profile" placement="bottom">
+            <StyledAvatar>TM</StyledAvatar>
+          </Tooltip>
         </Header>
         {selectedPoi && (
           <StyledCity>
             <CityName variant="h6">{selectedPoi.city}</CityName>
-            <StyledIcon
-              onClick={() => {
-                openChatbot(selectedPoi.city);
-              }}
-            >
-              info
-            </StyledIcon>
+            <Tooltip title="More information" placement="bottom">
+              <StyledIcon
+                onClick={() => {
+                  openChatbot(selectedPoi.city);
+                }}
+              >
+                info
+              </StyledIcon>
+            </Tooltip>
           </StyledCity>
         )}
         {selectedPoi && <EmojiDisplay selectedPoi={selectedPoi} />}
