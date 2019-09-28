@@ -11,9 +11,11 @@ const jsemoji = new JSEMOJI();
 export const StyledCard = styled(Card)`
   transition: 0.3s ease-in-out all;
   padding: 15px;
+  padding-top: 0;
   margin-top: 10px;
 
   @media (max-width: 940px) {
+    margin: 20px;
     margin-top: 90px;
   }
 `;
@@ -25,9 +27,11 @@ export const Block = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-right: 20px;
+  margin-top: 20px;
   cursor: pointer;
 
   &:last-of-type {
+    margin-top: -6px;
     margin-right: 0;
     display: flex;
     align-items: flex-start;
@@ -104,6 +108,9 @@ const EmojiContainer = ({ emoji, onAdd, onIncrease }) => {
 
 export const EmojisContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 `;
 
 const topEmojis = [
