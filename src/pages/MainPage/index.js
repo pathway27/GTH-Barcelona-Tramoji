@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import Map from "../../components/Map";
 import data from "../../data/we_da_best_data";
+import { EmojiDisplay } from "../../components/EmojiDisplay";
 
 export const Container = styled.div`
   padding: 15px;
@@ -53,6 +54,7 @@ export const MainPage = () => {
             </CenteredTypography>
           )}
         </StyledCard>
+        {selectedPoi && <EmojiDisplay />}
       </Container>
     </>
   );
