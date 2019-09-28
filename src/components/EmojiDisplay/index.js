@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
+import Modal from "@material-ui/core/Modal";
+import EmojiPicker from "emoji-picker-react";
+import JSEMOJI from "emoji-js";
+
+const jsemoji = new JSEMOJI();
 
 export const StyledCard = styled(Card)`
   padding: 15px;
@@ -45,18 +50,38 @@ export const StyledTypography = styled(Typography)`
   line-height: inherit !important;
 `;
 
-const EmojiContainer = ({ emoji }) => {
+export const StyledModal = styled.div`
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+`;
+
+const EmojiContainer = ({ emoji, onAdd, onIncrease }) => {
   const [showPicker, setShowPicker] = useState(false);
 
+  const handleEmojiClick = (emojiCode, emojiData) => {
+    const selectedEmoji = jsemoji.replace_colons(`:${emojiData.name}:`);
+
+    onAdd(selectedEmoji);
+    setShowPicker(false);
+  };
+
   return emoji ? (
-    <Block>
+    <Block onClick={onIncrease}>
       <StyledEmojiContainer>{emoji.emoji}</StyledEmojiContainer>
       <StyledTypography variant="subtitle1">{emoji.count}</StyledTypography>
     </Block>
   ) : (
     <Block>
       <StyledLasto onClick={() => setShowPicker(v => !v)}>+</StyledLasto>
-      {showPicker && "SIKE"}
+      {showPicker && (
+        <Modal open={showPicker} onClose={() => setShowPicker(v => !v)}>
+          <StyledModal>
+            <EmojiPicker onEmojiClick={handleEmojiClick} />
+          </StyledModal>
+        </Modal>
+      )}
     </Block>
   );
 };
@@ -74,13 +99,28 @@ const topEmojis = [
 ];
 
 export const EmojiDisplay = () => {
+  const [emojis, setEmojis] = useState(topEmojis);
+
+  const handleAdd = emoji => {
+    setEmojis(value => [...value, { emoji, count: 1 }]);
+  };
+
   return (
     <StyledCard>
       <EmojisContainer>
-        {topEmojis.map(emoji => (
-          <EmojiContainer emoji={emoji} />
+        {emojis.map((emoji, index) => (
+          <EmojiContainer
+            emoji={emoji}
+            onIncrease={() => {
+              setEmojis(current =>
+                current.map((v, i) =>
+                  i === index ? { ...v, count: v.count + 1 } : v
+                )
+              );
+            }}
+          />
         ))}
-        <EmojiContainer />
+        <EmojiContainer onAdd={handleAdd} />
       </EmojisContainer>
     </StyledCard>
   );
