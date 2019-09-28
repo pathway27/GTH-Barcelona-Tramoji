@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import { uniqWith } from "lodash";
 import Typography from "@material-ui/core/Typography";
@@ -48,11 +48,16 @@ export const CenteredTypography = styled(StyledTypography)`
 `;
 
 export const Subtitle = styled(CenteredTypography)`
+  transition: 0.3s ease-in-out all;
   text-align: center;
+  opacity: 0;
+  transform: translateY(+30px);
 
   @media (max-width: 940px) {
     display: none;
   }
+
+  ${props => props.subtitleVisible && `opacity: 1; transform: translateY(0px);`}
 `;
 
 export const CityName = styled(CenteredTypography)`
@@ -107,6 +112,12 @@ export const MainPage = () => {
     setSelectedPoi(poi);
   }, []);
 
+  const [subtitleVisible, setSubtitleVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setSubtitleVisible(true), 1000);
+  }, []);
+
   return (
     <>
       <Map
@@ -120,7 +131,9 @@ export const MainPage = () => {
           <CenteredTypography variant="h4" style={{ marginRight: "15px" }}>
             Tramoji™️
           </CenteredTypography>
-          <Subtitle variant="h6">Connect with emojions.</Subtitle>
+          <Subtitle variant="h6" subtitleVisible={subtitleVisible}>
+            Connect with emojions.
+          </Subtitle>
           <StyledAvatar>TM</StyledAvatar>
         </Header>
         {selectedPoi && (
