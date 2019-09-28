@@ -28,9 +28,6 @@ Project submission for the `Global Travel Hackathon in Barcelona, by Tramoji tea
 
 ## :tada: Why is this so awesome?
 
-* List reasons why you think your project is awesome.
-* Two.
-* Etc.
 
 * Time is a precious resource, we plan to save time in the long run.
 * It transcends language by allowing emoji to express your emoji.
