@@ -5,6 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
 import Badge from "@material-ui/core/Badge";
 import emojiNameMap from "emoji-name-map";
+import emojiUnicodeMap from "emoji-unicode-map";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import EmojiPicker from "emoji-picker-react";
 
@@ -103,9 +105,11 @@ const EmojiContainer = ({ emoji, onAdd, onIncrease }) => {
           vertical: "bottom"
         }}
       >
-        <StyledEmojiContainer userVoted={emoji.userVoted}>
-          {emoji.emoji}
-        </StyledEmojiContainer>
+        <Tooltip title={emojiUnicodeMap.get(emoji.emoji)} placement="bottom">
+          <StyledEmojiContainer userVoted={emoji.userVoted}>
+            {emoji.emoji}
+          </StyledEmojiContainer>
+        </Tooltip>
       </StyledBadge>
     </Block>
   ) : (
