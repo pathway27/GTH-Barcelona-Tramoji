@@ -165,13 +165,12 @@ export const MainPage = () => {
   const onZoomChanged = useCallback(level => setZoomLevel(level), []);
 
   const newData = useMemo(() => {
-    const zoomedIn = zoomLevel >= 10;
+    const zoomedIn = zoomLevel >= 13;
     const dataSource = zoomedIn ? granularData : aggregateData;
 
-    const filteredData = uniqWith(
-      dataSource.slice(0, 1000),
-      (a, b) => a.city === b.city
-    );
+    const filterNumber = zoomedIn ? 200 : 400;
+
+    const filteredData = dataSource.slice(0, filterNumber);
     return filteredData;
   }, [zoomLevel]);
 
